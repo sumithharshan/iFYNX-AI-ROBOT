@@ -1,0 +1,14 @@
+{
+  "name": "mini-buddy",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test test.mjs",
+    "check": "node --check server.mjs && node --check public/app.js"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

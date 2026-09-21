@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Buddy · Your little desk companion</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script type="module" src="/app.js"></script>
+  </head>
+  <body>
+    <header>
+      <a class="brand" href="/" aria-label="Buddy home"
+        ><span class="brand-mark">b.</span> buddy<span class="edition"
+          >YOUR POCKET-SIZED PAL</span
+        ></a
+      ><span id="connection" class="connection" role="status"
+        >Connecting to local AI…</span
+      >
+    </header>
+    <main>
+      <section class="world" aria-labelledby="hello">
+        <div class="intro">
+          <span class="eyebrow">A LITTLE COMPANY. A LITTLE CURIOSITY.</span>
+          <h1 id="hello">A little robot.<br />A lot of heart.</h1>
+          <p>Talk naturally. Watch your little companion come alive.</p>
+        </div>
+        <div id="robot-reply" class="robot-reply" aria-live="polite">
+          Hello, human. What shall we do today?
+        </div>
+        <div class="stage">
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <span class="spark spark-one">+</span
+          ><span class="spark spark-two">+</span
+          ><button
+            id="robot"
+            class="robot"
+            data-mood="happy"
+            data-action="idle"
+            aria-label="Pet Buddy"
+          >
+            <span class="torso"
+              ><span class="core"></span><span class="vents"></span></span
+            ><span class="ear left"></span><span class="ear right"></span
+            ><span class="arm left"></span><span class="arm right"></span
+            ><span class="heart">♥</span><span class="zzz">z z Z</span
+            ><span class="antenna"></span
+            ><span class="shell"
+              ><span class="face"
+                ><span class="eye left"></span><span class="eye right"></span
+                ><span class="cheek left"></span
+                ><span class="cheek right"></span
+                ><span class="mouth"></span></span
+              ><span class="body-mark">♥</span></span
+            ><span class="foot left"></span><span class="foot right"></span>
+          </button>
+          <div class="ground"></div>
+        </div>
+        <div class="mood-line">
+          <span class="live-dot"></span
+          ><span id="mood" role="status">Happy to see you</span>
+        </div>
+        <p class="pet-hint">A tap on the head = one very happy robot.</p>
+        <button id="motion-stop" class="motion-stop" hidden>
+          Stop movement
+        </button>
+        <div class="mood-controls" aria-label="Try an expression">
+          <button data-command="dance">♫ Dance</button
+          ><button data-command="wave">Wave</button
+          ><button data-emotion="sleepy">Sleepy</button
+          ><button data-command="love">♥ Love</button
+          ><button data-command="jump">Jump</button
+          ><button data-command="angry">Grumpy</button>
+        </div>
+        <details class="command-editor">
+          <summary>✦ Teach Buddy a command <span>Make it yours</span></summary>
+          <p>
+            Choose your own phrase and reaction. Exact phrases work instantly,
+            even without AI. Saving the same phrase replaces it.
+          </p>
+          <form id="command-form">
+            <label for="command-phrase">When I say</label
+            ><input
+              id="command-phrase"
+              maxlength="60"
+              placeholder="e.g. party time"
+              required
+            /><label for="command-reaction">Buddy should</label
+            ><select id="command-reaction"></select
+            ><label for="command-reply">And say</label
+            ><input
+              id="command-reply"
+              maxlength="160"
+              placeholder="e.g. Let's do a happy dance!"
+              required
+            /><button type="submit">Save command</button>
+          </form>
+          <p id="command-status" role="status"></p>
+          <div id="command-list"></div>
+        </details>
+        <div class="world-footer">
+          <span>BUILT FOR YOUR DESK</span><span>POWERED ON YOUR LAPTOP ↗</span>
+        </div>
+      </section>
+      <section class="conversation" aria-labelledby="chat-title">
+        <div class="chat-head">
+          <div>
+            <span class="eyebrow">SAY HELLO</span>
+            <h2 id="chat-title">Talk to Buddy</h2>
+          </div>
+          <button id="clear" class="text-button">New chat</button>
+        </div>
+        <div
+          id="messages"
+          class="messages"
+          role="log"
+          aria-label="Conversation"
+          aria-live="polite"
+        >
+          <div class="welcome">
+            <span class="mini-face" aria-hidden="true">• •</span>
+            <h3>Hey, I’m Buddy.</h3>
+            <p>
+              Ask me to wave, dance, or cheer you up.<br />Or just hang out for
+              a bit.
+            </p>
+            <span class="language-note"
+              >English, සිංහල, or Singlish — try your language.</span
+            >
+          </div>
+        </div>
+        <div id="activity" class="activity" role="status"></div>
+        <div id="error" class="error" role="alert" hidden></div>
+        <div id="prompts" class="prompts">
+          <button>Wave hello, then dance</button
+          ><button>Look left and right</button
+          ><button>I need a little cheering up</button>
+        </div>
+        <form id="chat-form">
+          <label for="message" class="sr-only">Message Buddy</label>
+          <div class="composer">
+            <textarea
+              id="message"
+              rows="2"
+              maxlength="2000"
+              placeholder="e.g. Wave hello and then do a happy dance"
+              required
+            ></textarea
+            ><button id="send" type="submit" aria-label="Send message" disabled>
+              ↑</button
+            ><button id="stop" type="button" hidden>Stop</button>
+          </div>
+          <div class="composer-meta">
+            <span>Enter to send · Shift + Enter for a new line</span
+            ><span id="count">0 / 2000</span>
+          </div>
+        </form>
+        <div class="privacy">
+          <span class="live-dot"></span> Local AI · No cloud API · Chat stays in
+          this tab
+        </div>
+        <p class="small-note">
+          Buddy can make mistakes. First reply may take a little longer.
+        </p>
+      </section>
+    </main>
+    <footer>
+      YOUR VERY OWN LITTLE COMPANION
+      <span>YOUR WORDS. THEIR LITTLE WORLD.</span>
+    </footer>
+  </body>
+</html>
